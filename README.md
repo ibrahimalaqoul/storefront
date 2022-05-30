@@ -16,5 +16,5 @@
 # UML Diagram
 ![](./class%2036%20uml.PNG)
 # Links :
-* [PR]()
-* [App]()
+* [PR](https://github.com/ibrahimalaqoul/storefront/pull/2)
+* [App](https://steady-dodol-d9df60.netlify.app/)
