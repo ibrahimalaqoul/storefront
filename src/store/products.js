@@ -67,7 +67,7 @@ const intialState = {
     ],
     selectedProduct : {}
 }
-export default (state = intialState, action) => {
+export default function state (state = intialState, action)  {
     switch(action.type){
         case 'PRODUCT_SELECTED' :
             let selectedProduct = state.products.find(product => product.id === action.payload);
