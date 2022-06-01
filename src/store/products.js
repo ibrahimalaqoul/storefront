@@ -6,7 +6,8 @@ const intialState = {
             name : 'premier league kits ',
                 price : '$100',
                 description : 'Football kits  for kids', 
-                image:'https://www.soccerlord.se/wp-content/uploads/2018/07/Arsenal-Home-Kids-Football-Kit-20-21.jpg'
+                image:'https://www.soccerlord.se/wp-content/uploads/2018/07/Arsenal-Home-Kids-Football-Kit-20-21.jpg',
+                items : 3,
         },
         {
             id : 2,
@@ -14,7 +15,9 @@ const intialState = {
             name : 'premier league football kits',
             price : '$200',
             description : 'premier league kits for adults',
-            image:'https://cdn.givemesport.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-30-at-16.26.30-770x1024.png'
+            image:'https://cdn.givemesport.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-30-at-16.26.30-770x1024.png',
+            items : 10,
+
 
         },
         {
@@ -23,7 +26,9 @@ const intialState = {
             name : 'movie tickets',
             price : '$100',
             description : 'Movie tickets for adults',
-            image:'https://media.istockphoto.com/vectors/two-cinema-tickets-on-white-background-movie-tickets-template-in-and-vector-id1130968476?k=20&m=1130968476&s=612x612&w=0&h=rxEuSy9-ilu8rFx015tJTf6QsqRBQ8oYf1FokY7jK80='
+            image:'https://media.istockphoto.com/vectors/two-cinema-tickets-on-white-background-movie-tickets-template-in-and-vector-id1130968476?k=20&m=1130968476&s=612x612&w=0&h=rxEuSy9-ilu8rFx015tJTf6QsqRBQ8oYf1FokY7jK80=',
+            items : 10,
+
 
 
         },
@@ -33,7 +38,9 @@ const intialState = {
             name : 'laptop',
             price : '$1000',
             description : 'Laptop for students',
-            image:'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg'
+            image:'https://cdn.mos.cms.futurecdn.net/6t8Zh249QiFmVnkQdCCtHK.jpg',
+            items : 10,
+
 
         },
         {
@@ -42,7 +49,9 @@ const intialState = {
             name : 'chicken',
             price : '$100',
             description : 'fried chicken',
-            image:'https://thestayathomechef.com/wp-content/uploads/2016/06/Fried-Chicken-4-1.jpg'
+            image:'https://thestayathomechef.com/wp-content/uploads/2016/06/Fried-Chicken-4-1.jpg',
+            items : 10,
+
 
         },
         {
@@ -51,7 +60,9 @@ const intialState = {
             name : 'shoes',
             price : '$180',
             description : 'Shoes for customers',
-            image:'https://i.pinimg.com/originals/b8/f1/8b/b8f18b6c85c5d080544cdb789629919c.jpg'
+            image:'https://i.pinimg.com/originals/b8/f1/8b/b8f18b6c85c5d080544cdb789629919c.jpg',
+            items : 10,
+
 
         },
         {
@@ -60,7 +71,9 @@ const intialState = {
             name : 'sony store',
             price : '$800',
             description : 'Sony store for gamers',
-            image:'https://cdn.vox-cdn.com/thumbor/Vgy3FfpWvBD32CYZrcNq6itGqnw=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20034840/ishMfuW.png'
+            image:'https://cdn.vox-cdn.com/thumbor/Vgy3FfpWvBD32CYZrcNq6itGqnw=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/20034840/ishMfuW.png',
+            items : 10,
+
 
         },
 
@@ -75,6 +88,22 @@ export default function state (state = intialState, action)  {
                 ...state,
                 selectedProduct : selectedProduct
             }
+        case 'Decrement_Product_Quantity' :
+            let products = state.products
+    
+           let newproducts =products.map(product => {
+               console.log(product.items)
+                if(product.id === action.payload&& product.items > 0){
+                    return {...product, items : product.items-1};
+                }else{
+                    return product;
+                }
+            })
+            return {
+                ...state,
+                products : newproducts
+            }
+            
         default :
             return state;
     }
@@ -85,3 +114,10 @@ export const getSelectedProduct = (value) => {
         payload : value
     }
 }
+export const decrementProductQuantity = (value) => {
+    return {
+        type : 'Decrement_Product_Quantity',
+        payload : value
+    }
+}
+

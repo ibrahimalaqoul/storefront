@@ -1,6 +1,7 @@
 
 import { connect } from "react-redux";
-import {addToCart} from '../store/Cart';
+import { addToCart } from '../store/Cart';
+import { decrementProductQuantity } from '../store/products';
 import Button from '@mui/material/Button';
 
 
@@ -13,21 +14,25 @@ function Products(props) {
             {
 
                 products.map(product => {
-                    if(product.categoryId === props.catagory?.selectedCategory?.id){
-                         return (
-                        <div>
-                            <h4>{product.name}</h4>
-                            <p>{product.description}</p>
-                            <p>{product.price}</p>
-                            <img src={product.image} alt="product" />
-                            <Button onClick={() => props.addToCart(product)}>Add to Cart</Button>
-                        </div>
+                    if (product.categoryId === props.catagory?.selectedCategory?.id) {
+                        return (
+                            <div>
+                                <h4>{product.name}</h4>
+                                <p>{product.description}</p>
+                                <p>{product.price}</p>
+                                <img src={product.image} alt="product" />
+                                <Button onClick={() => {
+                                    props.addToCart(product)
+                                    props.decrementProductQuantity(product.id)
+                                }
+                                }>Add to Cart</Button>
+                            </div>
                         )
                     } else {
                         //return something here.
                         return null;
                     }
-                   
+
                 })
             }
 
@@ -41,6 +46,8 @@ const mapStateToProps = state => {
     };
 }
 const mapDispatchToProps = {
-    addToCart
+    addToCart,
+    decrementProductQuantity
+
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Products);
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
