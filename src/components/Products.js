@@ -1,5 +1,9 @@
 
 import { connect } from "react-redux";
+import {addToCart} from '../store/Cart';
+import Button from '@mui/material/Button';
+
+
 function Products(props) {
     const products = props.reducers.products;
 
@@ -16,6 +20,7 @@ function Products(props) {
                             <p>{product.description}</p>
                             <p>{product.price}</p>
                             <img src={product.image} alt="product" />
+                            <Button onClick={() => props.addToCart(product)}>Add to Cart</Button>
                         </div>
                         )
                     } else {
@@ -35,4 +40,7 @@ const mapStateToProps = state => {
         catagory: state.creducers
     };
 }
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = {
+    addToCart
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Products);

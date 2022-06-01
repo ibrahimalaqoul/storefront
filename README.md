@@ -10,11 +10,14 @@
 * the actions are then used to update the state of the store.
 * the state is then used to update the UI.
 
-
-
+* the app now has a cart feature.
+* the cart feature is connected to the redux store.
+* the cart feature dispatches actions to the redux store.
+* the actions are then used to update the state of the store.
+* the state is then used to update the UI.
 
 # UML Diagram
-![](./class%2036%20uml.PNG)
+![](./ulmclass37.PNG)
 # Links :
 * [PR](https://github.com/ibrahimalaqoul/storefront/pull/2)
 * [App](https://steady-dodol-d9df60.netlify.app/)
