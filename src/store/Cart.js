@@ -9,6 +9,7 @@ export default function CartReducer (state = intialState, action) {
             let newCartItems = [...state.CartItems];
             let newCartItemsCount = state.CartItemsCount;
             let product = action.payload;
+            console.log(product);
             let productExists = newCartItems.find(cartItem => cartItem.id === product.id);
             if(productExists){
                 productExists.quantity += 1;
@@ -57,6 +58,7 @@ export default function CartReducer (state = intialState, action) {
 }
 
 export const addToCart = (value) => {
+    console.log(value);
     return {
         type: 'ADD_TO_CART',
         payload: value
