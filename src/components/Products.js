@@ -26,6 +26,8 @@ function Products(props) {
                                     props.decrementProductQuantity(product.id)
                                 }
                                 }>Add to Cart</Button>
+                                <p>Number Of items :  {product.items}</p>
+
                             </div>
                         )
                     } else {
