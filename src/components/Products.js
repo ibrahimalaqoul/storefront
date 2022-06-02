@@ -27,6 +27,7 @@ function Products(props) {
                                 }
                                 }>Add to Cart</Button>
                                 <p>number Of items : {product.items}</p>
+
                             </div>
                         )
                     } else {
